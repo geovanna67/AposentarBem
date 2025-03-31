@@ -1,4 +1,4 @@
-﻿package com.AgiBank.model;
+package com.AgiBank.model;
 import com.AgiBank.model.Contribuicao;
 import com.AgiBank.model.RegrasAposentadoria;
 
@@ -39,12 +39,19 @@ public class Pedagios extends RegrasAposentadoria {
         }
         return calcularSomaSalarios() / totalMeses;
     }
+    // 1- verificar se na data da reforma, se ele já possuia a idade minima
+    // 2- verificar se faltava até 2 anos para se aposentar na data da reforma
+    //(Ou seja faltava até 2 anos para atingir o tempo de contribuição minima)
+    //3- terá que trabalhar 50% a mais desse tempo faltante.
 
     public boolean isElegivelPedagio50() {
         int totalMeses = getTempoContribuicaoEmMeses();
         int tempoComPedagio = totalMeses + (totalMeses / 2);
         return tempoComPedagio >= 24;
     }
+// 1- verificar se na data da reforma ele já possuia a idade minima
+// 2- tendo a idade minima na data, verificar quanto tempo de contribuição faltava para atingir o minimo
+// 3- definir que terá de Contribuir pelo dobro do tempo que faltava para aposentar, para ser elegivel no pedagio 100%
 
     public boolean isElegivelPedagio100() {
         int idade = getIdade();

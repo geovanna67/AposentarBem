@@ -111,5 +111,19 @@ public class ContribuicaoDAOImpl implements ContribuicaoDAO {
         }
         return salarios;
     }
+    public LocalDate obterPrimeiraContribuicao(int idUsuario) throws SQLException {
+        String sql = "SELECT periodoInicio FROM Contribuicao WHERE idUsuario = ? ORDER BY periodoInicio ASC LIMIT 1";
+
+        try (Connection conexao = getConnection(url, username, password);
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.setInt(1, idUsuario);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getDate("periodoInicio").toLocalDate();
+            }
+        }
+        return null;
+    }
 
 }

@@ -1,4 +1,4 @@
-﻿package com.AgiBank.model;
+package com.AgiBank.model;
 
 import java.util.List;
 

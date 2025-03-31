@@ -1,4 +1,4 @@
-﻿package com.AgiBank.model;
+package com.AgiBank.model;
 
 import java.time.LocalDate;
 import java.time.Period;

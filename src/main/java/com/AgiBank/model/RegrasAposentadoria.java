@@ -1,4 +1,4 @@
-﻿package com.AgiBank.model;
+package com.AgiBank.model;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ public class RegrasAposentadoria {
     private Genero genero;
     private double valorAposentadoria;
     private Profissao profissao;
+
+/* geral o minimo é > 15 anos mulher e > 20 anos homem Contribuição/*
+ */
 
     public enum Profissao {
         GERAL(30, 35),
@@ -92,6 +95,12 @@ public class RegrasAposentadoria {
     }
 
     public double calcularCoeficienteAposentadoria() {
+        //anosminimos obtem o tempo mínimo de contribuição exigido baseado no gênero.
+        // (teria que obter o tempo mínimo de contribuição exigido baseado na sua respectiva regra)
+        // cada regra tem seu minimo de contribuição, em geral o minimo é > 15 M | >20 H
+        //porem se ajustar la encima o minimo geral, da certo, porque ai nas regras definimos o minimo
+
+
         int anosMinimos = genero.getTempoContribuicaoMinima();
         int mesesMinimos = anosMinimos * 12;
         int mesesExtras = Math.max(0, tempoContribuicaoEmMeses - mesesMinimos);

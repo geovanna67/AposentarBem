@@ -16,4 +16,5 @@ public interface ContribuicaoDAO {
 
     int obterProximoIdContribuicao() throws SQLException;
 
+    LocalDate obterPrimeiraContribuicao(int idUsuario) throws SQLException;
 }
